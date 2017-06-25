@@ -23,6 +23,7 @@ class Category(models.Model):
 class MyArticle(models.Model):
     title = models.CharField(verbose_name=u"标题", max_length=50)
     category = models.ForeignKey(Category, verbose_name=u"文章类别")
+    brief = models.TextField(verbose_name=u"文章简介", null=True, blank=True)
     content = UEditorField(verbose_name=u"文章内容", width=700, height=600, imagePath="article/ueditor/",
                           filePath="article/ueditor/", null=True, blank=True)
     add_time = models.DateTimeField(verbose_name=u"添加时间", default=datetime.now)

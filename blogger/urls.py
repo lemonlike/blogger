@@ -19,7 +19,7 @@ from django.conf.urls import url, include
 import xadmin
 from django.views.static import serve
 
-
+from article.views import IndexView, ArticleContentView
 from .settings import MEDIA_ROOT
 
 
@@ -31,6 +31,12 @@ urlpatterns = [
 
     # 富文本相关url
     url(r'^ueditor/',include('DjangoUeditor.urls')),
+
+    # 首页
+    url(r'^$', IndexView.as_view(), name="index"),
+
+    # 文章内容
+    url(r'^content/(?P<article_id>\d+)', ArticleContentView.as_view(), name="content"),
 
 
 ]
